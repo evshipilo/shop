@@ -1,0 +1,5 @@
+<div class="container">
+  <app-first></app-first>
+  <app-product-list [clear]="clear"></app-product-list>
+  <app-product (clearEvent)="handleEvent($event)"></app-product>
+</div>
