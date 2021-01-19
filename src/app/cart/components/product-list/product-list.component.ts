@@ -6,14 +6,15 @@ import {ProductsService} from '../../services/products.service';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
-  providers: [ProductsService]
+  // providers: [ProductsService]
 })
 export class ProductListComponent {
   @Input() clear: boolean;
 
-  products: Product[] = this.Products.getProducts();
+  // экземпляр класса в кемелкейсе с нижнего регистра
+  products: Product[] = this.productsService.getProducts();
 
-  constructor(public Products: ProductsService) {
+  constructor(public productsService: ProductsService) {
   }
 
   trackByFn(index, item): number {
