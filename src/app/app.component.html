@@ -1,5 +1,9 @@
 <div class="container">
+  <h1 #appTitle></h1>
   <app-first></app-first>
-  <app-product-list [clear]="clear"></app-product-list>
-  <app-product (clearEvent)="handleEvent($event)"></app-product>
+  <app-product-list></app-product-list>
+  <hr>
+  <app-cart-item-list></app-cart-item-list>
+
+
 </div>

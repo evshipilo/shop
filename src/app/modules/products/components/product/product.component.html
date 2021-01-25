@@ -1,0 +1,20 @@
+<!--<button mat-raised-button color="primary" (click)="onClick()">Buy</button>-->
+<!--<button mat-raised-button color="secondsry" (click)="onClear()">Clear</button>-->
+
+<ul>
+  <li>{{product.name}}</li>
+  <li>{{product.price}} $</li>
+  <li>{{product.isAvailable? 'available':'not available'}}</li>
+  <li>category: {{product.categories}}<hr/></li>
+</ul>
+<button
+  mat-raised-button color="primary"
+  *ngIf="product.isAvailable; else dis"
+  (click)="onClick(product)"
+>Buy</button>
+
+<ng-template #dis>
+  <button mat-raised-button disabled>Buy</button>
+</ng-template>
+
+

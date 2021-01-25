@@ -6,7 +6,6 @@ import {Component} from '@angular/core';
   styleUrls: ['./first.component.scss']
 })
 export class FirstComponent {
-  name = 'Chart';
-  description = 'Check products in chart';
+  description = 'Choose the products';
 
 }

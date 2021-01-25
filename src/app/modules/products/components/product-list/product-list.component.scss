@@ -1,0 +1,15 @@
+.card{
+ // width: 200px;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.fl{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  >div{
+    flex:0 0 300px;
+  }
+}
