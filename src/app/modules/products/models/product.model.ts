@@ -3,5 +3,5 @@ export interface ProductModel {
   price: number;
   isAvailable: boolean;
   categories: string;
-  id: number
+  id: number;
 }

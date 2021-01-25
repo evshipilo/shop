@@ -9,9 +9,9 @@ export class ProductsService {
 
   getProducts(): ProductModel[] {
     return  productsData.sort((a, b) => {
-      if (a.categories > b.categories) return 1
-      if (a.categories < b.categories) return -1
-      return 0
+      if (a.categories > b.categories) { return 1; }
+      if (a.categories < b.categories) { return -1; }
+      return 0;
     });
   }
 }
