@@ -1,0 +1,19 @@
+<!--<ul *ngIf="count">-->
+<div>
+<ul>
+  <li>{{product.name}}</li>
+  <li>{{product.price}} $</li>
+  <li>category: {{product.categories}}<hr/></li>
+  <button (click)="add(product)"
+          mat-icon-button color="basic"
+          aria-label="Example icon button with a home icon">
+    <mat-icon>add_circle</mat-icon>
+  </button>{{count}}
+  <button (click)="remove(product)"
+          mat-icon-button color="basic"
+          aria-label="Example icon button with a home icon">
+    <mat-icon>remove_circle</mat-icon>
+  </button>
+  <hr>
+</ul>
+</div>

@@ -1,0 +1,14 @@
+<div class="fl">
+  <h1>CART</h1>
+  <h3>Total count:{{totalProductsCount}}</h3>
+  <h3>Total price:{{totalProductsPrice}}$</h3>
+  <div appHightlight *ngFor="let prod of uniqueProducts" class="fl-item">
+      <app-cart-item
+        [product]="prod"
+        [count]="cartService.getItemsCount(selectedProducts,prod)"
+        (addProduct)="onAdd(prod)"
+        (removeProduct)="onRemove(prod)"
+      ></app-cart-item>
+  </div>
+</div>
+
