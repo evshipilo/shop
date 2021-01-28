@@ -10,7 +10,7 @@ export class ProductComponent {
   @Input() product: ProductModel;
   @Output() addProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
 
-  onClick(product): void {
-    this.addProduct.emit(product);
+  onClick(): void {
+    this.addProduct.emit(this.product);
   }
 }

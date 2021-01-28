@@ -7,13 +7,20 @@ import {CommunicateService} from '../../services/communicate/communicate.service
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
-  providers: [ProductsService]
+  // providers: [ProductsService] // он уже зарегистрирован через свой декоратор
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
 
-  products: ProductModel[] = this.productsService.getProducts();
+  // обычно так не делают
+  products: ProductModel[]; //  = this.productsService.getProducts();
 
-  constructor(public productsService: ProductsService, public communicateService: CommunicateService) {
+  constructor(
+    public productsService: ProductsService,
+    public communicateService: CommunicateService
+  ) {}
+
+  ngOnInit(): void {
+    this.products = this.productsService.getProducts();
   }
 
   trackByFn(index, item): number {
