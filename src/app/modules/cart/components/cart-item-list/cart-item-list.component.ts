@@ -21,14 +21,18 @@ export class CartItemListComponent implements OnInit, OnDestroy {
   constructor(private communicateService: CommunicateService, public cartService: CartService) {
   }
 
+  // тут желательно тип указать, модель описывали
   onAdd(prod): void {
     this.communicateService.publishData(prod);
   }
 
+  // тут желательно тип указать, модель описывали
   onRemove(prod): void {
     this.communicateService.publishData2(prod);
   }
 
+  // немного сложно так будет работать, чтобы на каждую операцию создавать поток
+  // лучше поток сделать один и передавать информацию, что надо делать.
   ngOnInit(): void {
     this.sub = this.communicateService.channel$.subscribe(
       data => {

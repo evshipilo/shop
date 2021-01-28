@@ -6,6 +6,9 @@ import {ProductModel} from '../../models/product.model';
   providedIn: 'root'
 })
 export class CommunicateService {
+  // можно так, а можно попробовать организовать эти каналы как
+  // свойства некоторого объекта и передавать название канала (свойства)
+  // тогда будет один метод для того, чтобы сделать publish
   private channel = new Subject<ProductModel>();
   public channel$ = this.channel.asObservable();
 

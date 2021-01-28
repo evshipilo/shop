@@ -10,7 +10,7 @@
 <button
   mat-raised-button color="primary"
   *ngIf="product.isAvailable; else dis"
-  (click)="onClick(product)"
+  (click)="onClick()"
 >Buy</button>
 
 <ng-template #dis>

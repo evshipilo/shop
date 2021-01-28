@@ -13,13 +13,15 @@ export class CartItemComponent {
   @Output() removeProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
 
 
+  // указать тип
   add(prod): void {
-    this.count++;
+    this.count++; // это инпут, он тут не должен меняться
     this.addProduct.emit(prod);
   }
 
+  // указать тип
   remove(prod): void {
-    this.count--;
+    this.count--; // это инпут, он тут не должен меняться
     this.removeProduct.emit(prod);
   }
 }
