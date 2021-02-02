@@ -11,10 +11,6 @@ import {CartService} from '../../services/cart.service';
 })
 export class CartItemListComponent implements OnInit, OnDestroy {
 
-  selectedProducts: ProductModel[] = [];
-  uniqueProducts: ProductModel[] = [];
-  totalProductsCount = 0;
-  totalProductsPrice = 0;
   private sub: Subscription;
   private sub2: Subscription;
 
@@ -31,20 +27,10 @@ export class CartItemListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub = this.communicateService.channel$.subscribe(
-      data => {
-        this.selectedProducts = this.cartService.addProduct(this.selectedProducts, data);
-        this.uniqueProducts = this.cartService.getUniqueList(this.selectedProducts);
-        this.totalProductsCount = this.cartService.getTotalItemsCount(this.selectedProducts);
-        this.totalProductsPrice = this.cartService.getTotalPrice(this.selectedProducts);
-      });
+      data => this.cartService.addProduct(data));
 
     this.sub2 = this.communicateService.channel2$.subscribe(
-      data => {
-        this.selectedProducts = this.cartService.removeProduct(this.selectedProducts, data);
-        this.uniqueProducts = this.cartService.getUniqueList(this.selectedProducts);
-        this.totalProductsCount = this.cartService.getTotalItemsCount(this.selectedProducts);
-        this.totalProductsPrice = this.cartService.getTotalPrice(this.selectedProducts);
-      });
+      data => this.cartService.removeProduct(data));
 
   }
 

@@ -6,39 +6,69 @@ import {ProductModel} from '../../products/models/product.model';
 })
 export class CartService {
 
+  cartProducts: ProductModel[] = [];
+  uniqueProducts: ProductModel[] = [];
+  totalQuantity = 0;
+  totalSum = 0;
+
   constructor() {
   }
 
-  addProduct(prodList: ProductModel[], prod: ProductModel): ProductModel[] {
-    return [...prodList, prod];
+
+  addProduct(prod: ProductModel): void {
+    this.cartProducts = [...this.cartProducts, prod];
+    this.updateCartData();
   }
 
-  removeProduct(prodList: ProductModel[], prod: ProductModel): ProductModel[] {
-    const ind = prodList.findIndex(pr => pr.id === prod.id);
-    if (ind >= 0) { prodList.splice(ind, 1); }
-    return [...prodList];
+  removeProduct(prod: ProductModel): void {
+    const ind = this.cartProducts.findIndex(pr => pr.id === prod.id);
+    if (ind >= 0) {
+      this.cartProducts.splice(ind, 1);
+    }
+    this.cartProducts = [...this.cartProducts];
+    this.updateCartData();
   }
 
-  getUniqueList(prodList: ProductModel[]): ProductModel[] {
+  setUniqueList(): void {
     const res: ProductModel[] = [];
-    const idArr: number[] = [...(new Set(prodList.map(i => i.id)))];
-    idArr.forEach((id, i) => {
-      const ind = prodList.findIndex(prod => prod.id === id);
-      res.push(prodList[ind]);
+    const idArr: number[] = [...(new Set(this.cartProducts.map(i => i.id)))];
+    idArr.forEach((id) => {
+      const ind = this.cartProducts.findIndex(prod => prod.id === id);
+      res.push(this.cartProducts[ind]);
     });
-    return res;
+    this.uniqueProducts = res;
   }
 
-  getItemsCount(prodList: ProductModel[], prod: ProductModel): number {
-    return prodList.filter(p => p.id === prod.id).length;
+  getItemsCount(prod: ProductModel): number {
+    return this.cartProducts.filter(p => p.id === prod.id).length;
   }
 
-  getTotalItemsCount(prodList: ProductModel[]): number {
-    return prodList.length;
+  private setTotalQuantity(): void {
+    this.totalQuantity = this.cartProducts.length;
   }
 
-  getTotalPrice(prodList: ProductModel[]): number {
-    return prodList.reduce((acc, prod) => acc + prod.price, 0);
+  private setTotalSum(): void {
+    this.totalSum = this.cartProducts.reduce((acc, prod) => acc + prod.price, 0);
+  }
+
+  updateCartData(): void {
+    this.setTotalSum();
+    this.setTotalQuantity();
+    this.setUniqueList();
+  }
+
+  removeOneTypeProducts(prod: ProductModel): void {
+    this.cartProducts = this.cartProducts.filter(p => p.id !== prod.id);
+    this.updateCartData();
+  }
+
+  removeAllProducts(): void {
+    this.cartProducts = [];
+    this.updateCartData();
+  }
+
+  isEmptyCart(): boolean {
+    return !this.cartProducts.length;
   }
 
 }

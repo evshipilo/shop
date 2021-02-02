@@ -1,14 +1,28 @@
 <div class="fl">
   <h1>CART</h1>
-  <h3>Total count:{{totalProductsCount}}</h3>
-  <h3>Total price:{{totalProductsPrice}}$</h3>
-  <div appHightlight *ngFor="let prod of uniqueProducts" class="fl-item">
+  <button
+  mat-raised-button color="primary"
+  *ngIf="!cartService.isEmptyCart(); else dis"
+  (click)="cartService.removeAllProducts()"
+>Clear Cart</button>
+  <h3>Total count:{{cartService.totalQuantity}}</h3>
+  <h3 class="bot">Total price:{{cartService.totalSum}}$</h3>
+
+  <div appHightlight appBordered *ngFor="let prod of cartService.uniqueProducts" class="fl-item">
       <app-cart-item
         [product]="prod"
-        [count]="cartService.getItemsCount(selectedProducts,prod)"
+        [count]="cartService.getItemsCount(prod)"
         (addProduct)="onAdd(prod)"
         (removeProduct)="onRemove(prod)"
       ></app-cart-item>
+    <button
+      class="but"
+      mat-raised-button color="secondary"
+      (click)="cartService.removeOneTypeProducts(prod)"
+    >Remove all "{{prod.name}}" items</button>
   </div>
 </div>
 
+<ng-template #dis>
+  <button mat-raised-button disabled>Buy</button>
+</ng-template>

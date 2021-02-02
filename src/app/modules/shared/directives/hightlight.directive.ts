@@ -12,13 +12,10 @@ export class HightlightDirective {
   @HostBinding('style.background') background: string;
 
   @HostListener('mouseenter') onMouseIn(): void {
-    console.log('+++');
     this.background = '#c0d3d3';
   }
 
   @HostListener('mouseleave') onMouseOut(): void {
     this.background = 'white';
-    console.log('+++');
   }
-
 }

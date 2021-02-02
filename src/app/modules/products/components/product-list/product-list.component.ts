@@ -22,7 +22,6 @@ export class ProductListComponent {
 
   onClick(prod): void {
     this.communicateService.publishData(prod);
-    console.log('prod', prod);
   }
 
 }

@@ -10,7 +10,6 @@ export class AppComponent implements AfterViewInit {
   name = 'Basketball Shop';
 
   ngAfterViewInit(): void {
-    console.log(this.appTitle.nativeElement);
     this.appTitle.nativeElement.textContent = this.name;
   }
 
