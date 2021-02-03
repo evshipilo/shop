@@ -7,7 +7,7 @@ import {ConfigModel} from '../../models/ConfigModel';
 export class ConfigOptionsService {
   private config: ConfigModel;
 
-  setConfig(config: { id?: number, login?: string, email?: string }): void {
+  setConfig(config: Partial<ConfigModel>): void {
     this.config = {...this.config, ...config};
   }
 

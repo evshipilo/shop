@@ -16,6 +16,7 @@ export class CartService {
 
 
   addProduct(prod: ProductModel): void {
+    // immutable approach
     this.cartProducts = [...this.cartProducts, prod];
     this.updateCartData();
   }
@@ -23,6 +24,8 @@ export class CartService {
   removeProduct(prod: ProductModel): void {
     const ind = this.cartProducts.findIndex(pr => pr.id === prod.id);
     if (ind >= 0) {
+      // mutable approach
+      // лучше использовать один подход
       this.cartProducts.splice(ind, 1);
     }
     this.cartProducts = [...this.cartProducts];

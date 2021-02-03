@@ -4,6 +4,10 @@ import {GeneratorService} from './generator.service';
 export const generatedString = new InjectionToken<any[]>('generator');
 
 
-export function generatorFactory(n: number): any {
+interface ReturnedFunction {
+  (data: GeneratorService): string;
+}
+
+export function generatorFactory(n: number): ReturnedFunction {
   return (data: GeneratorService): string => data.generate(n);
 }
