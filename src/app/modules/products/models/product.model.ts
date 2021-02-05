@@ -4,4 +4,5 @@ export interface ProductModel {
   isAvailable: boolean;
   categories: string;
   id: number;
+  count?: number;
 }

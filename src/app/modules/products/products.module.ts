@@ -6,6 +6,7 @@ import {ProductListComponent} from './components/product-list/product-list.compo
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -13,12 +14,13 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FirstComponent,
     ProductComponent,
     ProductListComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatCardModule,
-    MatGridListModule
-  ],
+    imports: [
+        // CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        MatGridListModule,
+        SharedModule
+    ],
   exports: [FirstComponent, ProductListComponent]
 })
 export class ProductsModule {

@@ -1,8 +1,8 @@
 <!--<ul *ngIf="count">-->
 <div>
 <ul>
-  <li>{{product.name}}</li>
-  <li>{{product.price}} $</li>
+  <li>{{product.name | uppercase }}</li>
+  <li>{{product.price | currency}}</li>
   <li>category: {{product.categories}}<hr/></li>
   <button (click)="add(product)"
           mat-icon-button color="basic"

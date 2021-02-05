@@ -1,5 +1,5 @@
 <div class="fl">
-<div *ngFor="let prod of products; trackBy: trackByFn" class="fl-item">
+<div *ngFor="let prod of products | async ; trackBy: trackByFn" class="fl-item">
   <mat-card class="card">
     <app-product [product]="prod" (addProduct)="onClick($event)"></app-product>
   </mat-card>

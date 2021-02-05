@@ -5,16 +5,26 @@ import {MatIconModule} from '@angular/material/icon';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { CartItemListComponent } from './components/cart-item-list/cart-item-list.component';
 import {SharedModule} from '../shared/shared.module';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatOptionModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+import {MatRadioGroup, MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
   declarations: [CartItemComponent, CartItemListComponent],
   imports: [
-    CommonModule,
+    // CommonModule,
     MatButtonModule,
     MatIconModule,
     SharedModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    // FormsModule,
+    MatRadioModule,
+
   ],
   exports: [CartItemListComponent]
 })

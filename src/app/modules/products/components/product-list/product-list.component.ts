@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProductModel} from '../../models/product.model';
 import {ProductsService} from '../../services/product/products.service';
 import {CommunicateService} from '../../services/communicate/communicate.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +12,7 @@ import {CommunicateService} from '../../services/communicate/communicate.service
 })
 export class ProductListComponent {
 
-  products: ProductModel[] = this.productsService.getProducts();
+  products: Observable<any> = this.productsService.getProducts();
 
   constructor(public productsService: ProductsService, public communicateService: CommunicateService) {
   }

@@ -4,6 +4,7 @@ import {CommunicateService} from '../../../products/services/communicate/communi
 import {Subscription} from 'rxjs';
 import {CartService} from '../../services/cart.service';
 
+
 @Component({
   selector: 'app-cart-item-list',
   templateUrl: './cart-item-list.component.html',
@@ -13,6 +14,10 @@ export class CartItemListComponent implements OnInit, OnDestroy {
 
   private sub: Subscription;
   private sub2: Subscription;
+
+  sortKeys = ['price', 'count', 'name'];
+  selectedValue: string;
+  sortType = false;
 
   constructor(private communicateService: CommunicateService, public cartService: CartService) {
   }
@@ -37,6 +42,10 @@ export class CartItemListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub.unsubscribe();
     this.sub2.unsubscribe();
+  }
+
+  onChange(): void{
+    this.sortType = !this.sortType;
   }
 
 

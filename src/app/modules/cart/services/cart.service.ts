@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ProductModel} from '../../products/models/product.model';
+import {count} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class CartService {
     const idArr: number[] = [...(new Set(this.cartProducts.map(i => i.id)))];
     idArr.forEach((id) => {
       const ind = this.cartProducts.findIndex(prod => prod.id === id);
-      res.push(this.cartProducts[ind]);
+      res.push({...this.cartProducts[ind], ...{count: this.getItemsCount(this.cartProducts[ind])}});
     });
     this.uniqueProducts = res;
   }
