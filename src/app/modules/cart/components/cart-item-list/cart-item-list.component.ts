@@ -13,7 +13,6 @@ import {CartService} from '../../services/cart.service';
 export class CartItemListComponent implements OnInit, OnDestroy {
 
   private sub: Subscription;
-  private sub2: Subscription;
 
   sortKeys = ['price', 'count', 'name'];
   selectedValue: string;
@@ -34,14 +33,15 @@ export class CartItemListComponent implements OnInit, OnDestroy {
     this.sub = this.communicateService.channel$.subscribe(
       data => this.cartService.addProduct(data));
 
-    this.sub2 = this.communicateService.channel2$.subscribe(
+    const sub = this.communicateService.channel2$.subscribe(
       data => this.cartService.removeProduct(data));
+
+    this.sub.add(sub);
 
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
-    this.sub2.unsubscribe();
   }
 
   onChange(): void{
