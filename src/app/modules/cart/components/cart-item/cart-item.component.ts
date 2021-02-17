@@ -14,12 +14,12 @@ export class CartItemComponent {
 
 
   add(prod): void {
-    this.count++;
+    // this.count++;
     this.addProduct.emit(prod);
   }
 
   remove(prod): void {
-    this.count--;
+    // this.count--;
     this.removeProduct.emit(prod);
   }
 }

@@ -6,8 +6,17 @@
     (click)="cartService.removeAllProducts()"
   >Clear Cart
   </button>
+  <button
+    mat-raised-button color="basic"
+    routerLink='order'
+  >Order!
+  </button>
   <h3>Total count:{{cartService.totalQuantity}}</h3>
   <h3 class="bot">Total price:{{cartService.totalSum}}$</h3>
+
+  <router-outlet>
+
+  </router-outlet>
 
 
   <mat-form-field appearance="outline">
@@ -19,9 +28,9 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-radio-group (change)="onChange()" aria-label="Select an option">
+  <mat-radio-group class="radio" (change)="onChange()" aria-label="Select an option">
     <mat-radio-button [checked]="!sortType" value="false">from max to min</mat-radio-button>
-    <mat-radio-button [checked]="sortType" value="true">from min to max</mat-radio-button>
+    <mat-radio-button class="radio" [checked]="sortType" value="true">from min to max</mat-radio-button>
   </mat-radio-group>
 
 

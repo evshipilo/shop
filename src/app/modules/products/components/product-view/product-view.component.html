@@ -1,0 +1,22 @@
+<mat-card class="card">
+  <ul>
+    <li>{{product.name}}</li>
+    <li>{{product.price}} $</li>
+    <li>{{product.isAvailable? 'available':'not available'}}</li>
+    <li>category: {{product.categories}}</li>
+    <li>description: {{product.description}}<hr/></li>
+  </ul>
+  <button
+    mat-raised-button color="primary"
+    *ngIf="product.isAvailable; else dis"
+    (click)="onClick()"
+  >Buy</button>
+  <button
+    mat-raised-button color="basic"
+    routerLink="/home"
+  >close</button>
+
+  <ng-template #dis>
+    <button mat-raised-button disabled>Buy</button>
+  </ng-template>
+</mat-card>

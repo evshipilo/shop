@@ -12,6 +12,10 @@
   *ngIf="product.isAvailable; else dis"
   (click)="onClick(product)"
 >Buy</button>
+<button
+  mat-raised-button color="basic"
+(click)="onView()"
+>View</button>
 
 <ng-template #dis>
   <button mat-raised-button disabled>Buy</button>

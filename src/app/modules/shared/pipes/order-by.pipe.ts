@@ -7,9 +7,9 @@ import {ProductModel} from '../../products/models/product.model';
 export class OrderByPipe implements PipeTransform {
 
   transform(value: Array<ProductModel>, ...args: [string?, boolean?]): Array<ProductModel> {
-    const sortKey = args[0];
+    const [sortKey, order] = args;
     if (!sortKey) { return value; }
-    const order = args[1];
+    // const order = args[1];
     if (order) { return value.sort((a, b) => {
       if (a[sortKey] >= b[sortKey]) { return 1; }
       if (a[sortKey] < b[sortKey]) { return -1; }

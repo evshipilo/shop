@@ -19,15 +19,19 @@ export class CartService {
   addProduct(prod: ProductModel): void {
     this.cartProducts = [...this.cartProducts, prod];
     this.updateCartData();
+    console.log(this.cartProducts);
   }
 
   removeProduct(prod: ProductModel): void {
-    const ind = this.cartProducts.findIndex(pr => pr.id === prod.id);
+    const copy = [...this.cartProducts];
+    copy.reverse();
+    const ind = copy.findIndex(pr => pr.id === prod.id);
     if (ind >= 0) {
-      this.cartProducts.splice(ind, 1);
+      this.cartProducts.splice(this.cartProducts.length - 1 - ind, 1);
     }
     this.cartProducts = [...this.cartProducts];
     this.updateCartData();
+    console.log(this.cartProducts);
   }
 
   setUniqueList(): void {

@@ -5,4 +5,5 @@ export interface ProductModel {
   categories: string;
   id: number;
   count?: number;
+  description?: string;
 }

@@ -1,0 +1,32 @@
+<div class="fl">
+  <div *ngFor="let product of products" class="fl-item">
+    <mat-card class="card">
+      <ul>
+        <li>{{product.name}}</li>
+        <li>{{product.price}} $</li>
+        <li>{{product.isAvailable ? 'available' : 'not available'}}</li>
+        <li>category: {{product.categories}}
+          <hr/>
+        </li>
+      </ul>
+      <button
+        mat-raised-button color="primary"
+        (click)="onChange(product)"
+      >Change
+      </button>
+      <button
+        mat-raised-button color="basic"
+        (click)="onDelete(product.id)"
+      >Delete
+      </button>
+
+    </mat-card>
+  </div>
+</div>
+<button
+  mat-raised-button color="basic"
+  routerLink="/admin/add"
+>Add product
+</button>
+
+

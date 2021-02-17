@@ -10,6 +10,9 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatRadioGroup, MatRadioModule} from '@angular/material/radio';
+import {CartService} from './services/cart.service';
+import {RoutingModule} from '../routing/routing.module';
+
 
 
 @NgModule({
@@ -24,8 +27,9 @@ import {MatRadioGroup, MatRadioModule} from '@angular/material/radio';
     MatFormFieldModule,
     // FormsModule,
     MatRadioModule,
+    RoutingModule,
 
   ],
-  exports: [CartItemListComponent]
+  exports: [CartItemListComponent, ]
 })
 export class CartModule { }

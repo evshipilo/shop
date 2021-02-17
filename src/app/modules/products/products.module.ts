@@ -7,20 +7,24 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {SharedModule} from '../shared/shared.module';
+import {ProductViewComponent} from './components/product-view/product-view.component';
+import {RoutingModule} from '../routing/routing.module';
 
 
 @NgModule({
   declarations: [
     FirstComponent,
     ProductComponent,
-    ProductListComponent],
-    imports: [
-        // CommonModule,
-        MatButtonModule,
-        MatCardModule,
-        MatGridListModule,
-        SharedModule
-    ],
+    ProductListComponent,
+    ProductViewComponent],
+  imports: [
+    // CommonModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    SharedModule,
+    RoutingModule
+  ],
   exports: [FirstComponent, ProductListComponent]
 })
 export class ProductsModule {

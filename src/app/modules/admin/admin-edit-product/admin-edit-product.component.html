@@ -1,0 +1,41 @@
+<div class="back">
+  <mat-form-field>
+    <mat-label class="lab">Product Name </mat-label>
+    <input matInput [(ngModel)]="product.name" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label class="lab">Price </mat-label>
+    <input matInput type="number" [(ngModel)]="product.price" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label class="lab">Description </mat-label>
+    <mat-label>Textarea</mat-label>
+    <textarea matInput [(ngModel)]="product.description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Availability</mat-label>
+    <mat-select [(value)]="product.isAvailable">
+      <mat-option [value]="true">available</mat-option>
+      <mat-option [value]="false">not available</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select [(value)]="product.categories">
+      <mat-option [value]="cat.balls">{{cat.balls}}</mat-option>
+      <mat-option [value]="cat.socks">{{cat.socks}}</mat-option>
+      <mat-option [value]="cat.snickers">{{cat.snickers}}</mat-option>
+      <mat-option [value]="cat.shorts">{{cat.shorts}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <button mat-raised-button color="primary" (click)="onClick()">
+    EDIT!
+  </button>
+</div>
+

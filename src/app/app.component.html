@@ -1,9 +1,35 @@
 <div class="container">
   <h1 #appTitle></h1>
-  <app-first></app-first>
-  <app-product-list></app-product-list>
+
+  <button mat-raised-button color="accent" routerLinkActive="active" routerLink="/home">Products List
+  </button>
+  <button mat-raised-button color="accent"
+          [matBadge]="cartService.totalQuantity" matBadgePosition="after" matBadgeColor="base"
+          routerLinkActive="active" routerLink="/chart">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" routerLinkActive="active" routerLink="/admin/products">Admin page
+  </button>
+
+
+  <mat-form-field class="pass"  >
+    <mat-label class="lab">Password "admin" </mat-label>
+    <input matInput [(ngModel)]="password" >
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onClick()">
+   enter
+  </button>
+
   <hr>
-  <app-cart-item-list></app-cart-item-list>
+  <!--  <app-first></app-first>-->
+
+  <router-outlet>
+
+  </router-outlet>
+
+  <!--  <app-product-list></app-product-list>-->
+  <!--  <hr>-->
+  <!--  <app-cart-item-list></app-cart-item-list>-->
 
 
 </div>
