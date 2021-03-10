@@ -24,6 +24,10 @@ export class ProductViewComponent implements OnInit {
     this.router.navigate(['/home']).then(e => false);
   }
 
+  // Немного необычно видеть хук асинхронной функцией.
+  // Хотя это и работает, я бы так не делал, лучше создать отдельную асинхронную функцию,
+  // как некоторый приватный метод. Тогда, если возникнет какое-то изменение в хуках,
+  // код будет работать.
   async ngOnInit(): Promise<void> {
     // this.route.params.subscribe(async params => {
     //     [this.product] = await this.productService.getProductById(+params.productId);

@@ -17,12 +17,12 @@ export class ProductComponent {
   @Input() product: ProductModel;
   @Output() addProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
 
-  onClick(product): void {
+  onClick(product /*: ProductModel? */): void {
     this.addProduct.emit(product);
   }
 
   onView(): void {
     const link = ['/view', this.product.id];
-    this.router.navigate(link).then(e => false);
+    this.router.navigate(link).then(e => false); // что это значит?
   }
 }
