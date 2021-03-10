@@ -4,6 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
+import { HttpClientModule } from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {CartModule} from './modules/cart/cart.module';
 import {OrdersModule} from './modules/orders/orders.module';
@@ -19,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {AdminModule} from './modules/admin/admin.module';
 import {ProductsService} from './modules/products/services/product/products.service';
+import {httpInterceptorProviders} from "./modules/core/interseptors";
 
 @NgModule({
   declarations: [
@@ -38,13 +40,13 @@ import {ProductsService} from './modules/products/services/product/products.serv
     MatBadgeModule,
     MatInputModule,
     AdminModule,
-
+    HttpClientModule,
     RoutingModule,
     MatFormFieldModule
 
   ],
   providers: [
-
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

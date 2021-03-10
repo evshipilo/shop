@@ -15,12 +15,16 @@ export class AdminProductsComponent {
               private router: Router) {
   }
 
-  products: ProductModel[] = this.productsService.getProducts();
+  async ngOnInit() {
+    this.products = await this.productsService.getProducts();
+  }
+
+  products: ProductModel[] ;
 
 
-  onDelete(id): void{
-    this.productsService.delProductById(id);
-    this.products = this.productsService.getProducts();
+  async onDelete(id): Promise<void>{
+    await this.productsService.delProductById(id);
+    this.products = await this.productsService.getProducts();
   }
 
   onChange(p): void{

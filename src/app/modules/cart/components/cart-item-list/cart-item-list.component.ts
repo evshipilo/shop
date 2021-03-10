@@ -3,6 +3,7 @@ import {ProductModel} from '../../../products/models/product.model';
 import {CommunicateService} from '../../../products/services/communicate/communicate.service';
 import {Subscription} from 'rxjs';
 import {CartService} from '../../services/cart.service';
+import {CartObservableService} from "../../services/cart-observable.service";
 
 
 @Component({
@@ -21,11 +22,18 @@ export class CartItemListComponent implements OnInit, OnDestroy {
 
   constructor(
     // private communicateService: CommunicateService,
+    // private cartObservableService: CartObservableService,
     public cartService: CartService) {
   }
 
   onAdd(prod): void {
-    this.cartService.addProduct(prod);
+    // this.cartObservableService.addProduct(prod).subscribe(
+    //   data=>{
+    //     this.cartObservableService.getCartProducts().subscribe(
+    //       data => this.cartService.setCardProducts(data))
+    //   }
+    // )
+     this.cartService.addProduct(prod);
   }
 
   onRemove(prod): void {
@@ -33,16 +41,13 @@ export class CartItemListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.sub = this.communicateService.channel$.subscribe(
-    //   data => this.cartService.addProduct(data));
-    //
-    // this.sub = this.communicateService.channel2$.subscribe(
-    //   data => this.cartService.removeProduct(data));
-
+    // this.sub = this.cartObservableService.getCartProducts().subscribe(
+    //   data => this.cartService.setCardProducts(data));
+    this.cartService.updateCartData()
   }
 
   ngOnDestroy(): void {
-    // this.sub.unsubscribe();
+     // this.sub.unsubscribe();
     // this.sub2.unsubscribe();
   }
 

@@ -1,30 +1,35 @@
 import {Injectable, OnDestroy, OnInit} from '@angular/core';
 import {ProductModel} from '../../models/product.model';
-import {productsData} from '../../../../../assets/productsData';
+// import {productsData} from '../../../../../assets/productsData';
 import {Observable, Subject} from 'rxjs';
 import {category} from '../../../../../enum/category';
+import {ProductPromiseService} from "./product-promise.service";
 
 @Injectable(
   {
     providedIn: 'root'
   }
 )
-export class ProductsService{
+export class ProductsService {
 
-  constructor() {
-    // console.log('constructor initialized');
+  constructor(private productPromiseService: ProductPromiseService) {
   }
 
-  products: ProductModel[] = productsData;
+  // products: ProductModel[] = [];
 
-  //  products = new Subject<ProductModel[]>()
+  getId(): string {
+    const stringArr = [];
+    for (let i = 0; i < 2; i++) {
+      // tslint:disable-next-line:no-bitwise
+      const S4 = (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+      stringArr.push(S4);
+    }
+    return stringArr.join('-');
+  }
 
-  // ngOnDestroy() {
-  //   console.log('localService is destroyed');
-  // }
-
-  getProducts(): ProductModel[] {
-    const data = this.products.sort((a, b) => {
+  async getProducts(): Promise<ProductModel[]> {
+    const products = await this.productPromiseService.getProducts()
+    const data = products.sort((a, b) => {
       if (a.categories > b.categories) {
         return 1;
       }
@@ -33,52 +38,61 @@ export class ProductsService{
       }
       return 0;
     });
-    // return new Observable(subscriber => {
-    //   subscriber.next(data);
-    // });
+
     return data;
   }
 
-  getLastId(): number {
-    const prod = [...this.products];
-    const idArr = prod.map(p => p.id);
-    idArr.sort((a, b) => {
-      if (a > b) { return -1; }
-      if (a === b) { return 0; }
-      if (a < b) { return 1; }
-    });
-    return idArr[0];
-  }
+  // getLastId(products: ProductModel[]): number {
+  //   const prod = [...products];
+  //   const idArr = prod.map(p => p.id);
+  //   idArr.sort((a, b) => {
+  //     if (a > b) {
+  //       return -1;
+  //     }
+  //     if (a === b) {
+  //       return 0;
+  //     }
+  //     if (a < b) {
+  //       return 1;
+  //     }
+  //   });
+  //   return idArr[0];
+  // }
 
-  addProduct(name: string, price: number, description: string, isAvailable: boolean, categories: category): void {
-    this.products = [...this.products, {
+  async addProduct(name: string, price: number, description: string, isAvailable: boolean, categories: category): Promise<void> {
+    // const products = await this.productPromiseService.getProducts()
+    const prod = {
       name,
       price,
       isAvailable,
       categories,
-      id: +this.getLastId() + 1,
+      id: this.getId(),
       description,
-    }];
+    };
+    await this.productPromiseService.createProduct(prod)
   }
 
 
-  getProductById(id: number): ProductModel {
-    return this.products.find(prod => prod.id === id);
+  async getProductById(id: string): Promise<ProductModel> {
+    const prod = await this.productPromiseService.getProductById(id)
+    return prod
   }
 
-  delProductById(id: number): void {
-    const copy = [...this.products];
-    const ind = this.products.findIndex(prod => prod.id === id);
-    copy.splice(ind, 1);
-    this.products = [...copy];
+  async delProductById(id: string): Promise<void> {
+    // const copy = [...this.products];
+    // const ind = this.products.findIndex(prod => prod.id === id);
+    // copy.splice(ind, 1);
+    // this.products = [...copy];
     // console.log(this.products)
+    await this.productPromiseService.deleteProduct(id)
   }
 
-  changeProduct(p): void{
-    const copy = [...this.products];
-    const ind = this.products.findIndex(prod => prod.id === p.id);
-    copy.splice(ind, 1, p);
-    this.products = [...copy];
+  async changeProduct(p): Promise<void> {
+    //   const copy = [...this.products];
+    //   const ind = this.products.findIndex(prod => prod.id === p.id);
+    //   copy.splice(ind, 1, p);
+    //   this.products = [...copy];
+    await this.productPromiseService.updateProduct(p)
   }
 
 }

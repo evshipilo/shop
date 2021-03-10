@@ -24,12 +24,13 @@ export class ProductViewComponent implements OnInit {
     this.router.navigate(['/home']).then(e => false);
   }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-        this.product = this.productService.getProductById(+params.productId);
-
-      }
-    );
+  async ngOnInit(): Promise<void> {
+    // this.route.params.subscribe(async params => {
+    //     [this.product] = await this.productService.getProductById(+params.productId);
+    //   }
+    // );
+    const id = this.route.snapshot.params['productId'];
+    this.product = await this.productService.getProductById(id);
   }
 
 }

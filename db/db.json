@@ -1,0 +1,45 @@
+{
+  "products": [
+    {
+      "name": "Nike L",
+      "price": 14,
+      "isAvailable": true,
+      "categories": "socks",
+      "id": "2",
+      "description": "Attack the rack and dismantle your opponents with supreme strength and confidence in men\"s LeBron shoes"
+    },
+    {
+      "name": "KD12",
+      "price": 179,
+      "isAvailable": true,
+      "categories": "snickers",
+      "id": "3",
+      "description": " The Nike KD12 addressed the strobel, the thin layer inside the shoe that separates your foot from the midsole cushioning"
+    },
+    {
+      "name": "Nike S",
+      "price": 14,
+      "isAvailable": true,
+      "categories": "socks",
+      "id": "5",
+      "description": "Get laced up for training, sport and lifestyle with the latest designs of men\"s shoes and sneakers from Nike"
+    },
+    {
+      "name": "kobe1",
+      "price": 100,
+      "isAvailable": false,
+      "categories": "balls",
+      "id": "6",
+      "description": "sdfg sergergv ertgergefv"
+    },
+    {
+      "name": "ggo-700",
+      "price": 50,
+      "isAvailable": true,
+      "categories": "socks",
+      "id": "7",
+      "description": "w ewrwe  werw rw wetgerger "
+    }
+  ],
+  "cart": []
+}

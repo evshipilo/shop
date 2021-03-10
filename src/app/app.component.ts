@@ -19,6 +19,7 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.appTitle.nativeElement.textContent = this.name;
+    this.cartService.updateCartData()
   }
 
   onClick(): void{

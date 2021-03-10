@@ -3,7 +3,7 @@ export interface ProductModel {
   price: number;
   isAvailable: boolean;
   categories: string;
-  id: number;
+  id: string;
   count?: number;
   description?: string;
 }

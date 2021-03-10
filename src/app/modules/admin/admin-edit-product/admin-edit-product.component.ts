@@ -14,20 +14,19 @@ export class AdminEditProductComponent implements OnInit {
   constructor(private route: ActivatedRoute, private productService: ProductsService) {
   }
 
-  product: ProductModel;
+  product: ProductModel = {name: '', price: 0, categories: '', id: '0', isAvailable: true};
 
   cat = category;
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-        this.product = this.productService.getProductById(+params.productId);
-
+    this.route.params.subscribe(async params => {
+        this.product = await this.productService.getProductById(params.productId);
       }
     );
   }
 
-  onClick(): void {
-    this.productService.changeProduct(this.product);
+  async onClick(): Promise<void> {
+    await this.productService.changeProduct(this.product);
   }
 
 
