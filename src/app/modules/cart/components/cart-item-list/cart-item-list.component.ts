@@ -26,7 +26,7 @@ export class CartItemListComponent implements OnInit, OnDestroy {
     public cartService: CartService) {
   }
 
-  onAdd(prod): void {
+  onAdd(prod: ProductModel): void {
     // this.cartObservableService.addProduct(prod).subscribe(
     //   data=>{
     //     this.cartObservableService.getCartProducts().subscribe(
@@ -36,7 +36,7 @@ export class CartItemListComponent implements OnInit, OnDestroy {
      this.cartService.addProduct(prod);
   }
 
-  onRemove(prod): void {
+  onRemove(prod: ProductModel): void {
     this.cartService.removeProduct(prod);
   }
 

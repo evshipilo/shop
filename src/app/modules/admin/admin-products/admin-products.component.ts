@@ -27,6 +27,7 @@ export class AdminProductsComponent {
     this.products = await this.productsService.getProducts();
   }
 
+  // тип p?
   onChange(p): void{
     const link = ['/admin/edit', p.id];
     this.router.navigate(link).then(e => false);

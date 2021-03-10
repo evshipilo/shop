@@ -13,12 +13,12 @@ export class CartItemComponent {
   @Output() removeProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
 
 
-  add(prod): void {
+  add(prod: ProductModel): void {
     // this.count++;
     this.addProduct.emit(prod);
   }
 
-  remove(prod): void {
+  remove(prod: ProductModel): void {
     // this.count--;
     this.removeProduct.emit(prod);
   }
