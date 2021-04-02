@@ -22,6 +22,11 @@ export class ProductsStateFacadeService {
         return this.store.pipe(select(ProductsSelectors.selectAllProducts));
     }
 
+    get routerData$(): Observable<any> {
+        return this.store.pipe(select(ProductsSelectors.selectDataFromRoute));
+    }
+
+
     getInitialAppData(): void {
         this.store.dispatch(ProductsActions.loadProducts());
     }

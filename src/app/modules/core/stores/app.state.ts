@@ -1,6 +1,7 @@
 import {ProductState} from "./product-store";
-import {RouterStateUrl} from "./router-store";
+import {RouterState} from "./router-store";
 
 export interface AppState {
-    products: ProductState;
+    products: ProductState,
+    router: RouterState
 }

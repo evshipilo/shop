@@ -20,7 +20,7 @@ export class ProductViewComponent implements OnInit {
                 private productService: ProductsService,
                 private router: Router,
                 private cartService: CartService,
-                private routerStateFacadeService: RouterStateFacadeService
+                private productStateFacadeService: ProductsStateFacadeService
     ) {
     }
 
@@ -34,9 +34,11 @@ export class ProductViewComponent implements OnInit {
         //     this.product = await this.productService.getProductById(params.productId);
         //   }
         // );
-        this.routerStateFacadeService.idFromRout$.subscribe(data => {
-
-        })
+        // this.routerStateFacadeService.idFromRout$.subscribe(data => {
+        //
+        // })
+        this.productStateFacadeService.routerData$.subscribe(data=>{
+            console.log('*****',data)})
         const id = this.route.snapshot.params['productId'];
         this.product = await this.productService.getProductById(id);
     }
