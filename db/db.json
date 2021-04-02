@@ -41,5 +41,38 @@
       "description": "w ewrwe  werw rw wetgerger "
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "name": "KD12",
+      "price": 179,
+      "isAvailable": true,
+      "categories": "snickers",
+      "id": "3:8353-5f4b",
+      "description": " The Nike KD12 addressed the strobel, the thin layer inside the shoe that separates your foot from the midsole cushioning"
+    },
+    {
+      "name": "KD12",
+      "price": 179,
+      "isAvailable": true,
+      "categories": "snickers",
+      "id": "3:2abd-721d",
+      "description": " The Nike KD12 addressed the strobel, the thin layer inside the shoe that separates your foot from the midsole cushioning"
+    },
+    {
+      "name": "Nike L",
+      "price": 14,
+      "isAvailable": true,
+      "categories": "socks",
+      "id": "2:88fe-d42a",
+      "description": "Attack the rack and dismantle your opponents with supreme strength and confidence in men\"s LeBron shoes"
+    },
+    {
+      "name": "ggo-700",
+      "price": 50,
+      "isAvailable": true,
+      "categories": "socks",
+      "id": "7:779d-0fd6",
+      "description": "w ewrwe  werw rw wetgerger "
+    }
+  ]
 }

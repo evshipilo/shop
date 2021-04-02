@@ -5,46 +5,37 @@ import {CommunicateService} from '../../services/communicate/communicate.service
 import {Observable} from 'rxjs';
 import {CartService} from '../../../cart/services/cart.service';
 import {CartObservableService} from "../../../cart/services/cart-observable.service";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../../core/stores";
+import {ProductsStateFacadeService} from "../../../core/stores/product-store/products.facade";
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss'],
-  providers: []
+    selector: 'app-product-list',
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.scss'],
+    providers: []
 })
-export class ProductListComponent{
+export class ProductListComponent {
 
-  products: ProductModel[]
+    products: Observable<readonly ProductModel[]>=this.productsStateFacadeService.allProducts$
 
-  async ngOnInit() {
-    this.products = await this.productsService.getProducts();
-  }
+    ngOnInit() {
+        this.productsStateFacadeService.getInitialAppData();
+    }
 
-  constructor(public productsService: ProductsService,
-              private cartObservableService: CartObservableService,
-              private cartService: CartService) {
-  }
+    constructor(public productsService: ProductsService,
+                private cartObservableService: CartObservableService,
+                private cartService: CartService,
+                private productsStateFacadeService: ProductsStateFacadeService
+    ) {
+    }
 
+    trackByFn(index, item): number {
+        return index;
+    }
 
-
-  // products: ProductModel[] = this.productsService.getProducts();
-
-
-
-  trackByFn(index, item): number {
-    return index;
-  }
-
-  onClick(prod): void {
-    // this.communicateService.publishData(prod);
-    this.cartService.addProduct(prod);
-    // this.cartObservableService.addProduct(prod).subscribe(
-    //   data=>{
-    //     this.cartObservableService.getCartProducts().subscribe(
-    //       data => this.cartService.setCardProducts(data))
-    //   }
-    // )
-
-  }
+    onClick(prod): void {
+        this.cartService.addProduct(prod);
+    }
 
 }

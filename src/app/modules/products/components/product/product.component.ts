@@ -23,6 +23,6 @@ export class ProductComponent {
 
   onView(): void {
     const link = ['/view', this.product.id];
-    this.router.navigate(link).then(e => false);
+    this.router.navigate(link);
   }
 }

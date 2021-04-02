@@ -21,6 +21,10 @@ import {MatInputModule} from '@angular/material/input';
 import {AdminModule} from './modules/admin/admin.module';
 import {ProductsService} from './modules/products/services/product/products.service';
 import {httpInterceptorProviders} from "./modules/core/interseptors";
+import { StoreModule } from '@ngrx/store';
+import { RootStoreModule } from './modules/core/stores/root-store.module';
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -42,7 +46,13 @@ import {httpInterceptorProviders} from "./modules/core/interseptors";
     AdminModule,
     HttpClientModule,
     RoutingModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+    RootStoreModule
 
   ],
   providers: [
