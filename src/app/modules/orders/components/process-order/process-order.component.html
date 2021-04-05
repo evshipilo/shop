@@ -1,18 +1,24 @@
 
 <fieldset [formGroup]="orderForm" >
-    <input formControlName="firstName" placeholder="first name">
+    <input formControlName="firstName" placeholder="first name" >
     <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
-         class="alert alert-danger">first name required!!</div>
+         >first name required!!</div>
     <input formControlName="lastName" placeholder="last name">
     <input formControlName="email" placeholder="email">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+         class="alert alert-danger">email required and must be valid!!</div>
     <div formArrayName="phones">
         <div *ngFor="let phone of phones.controls; index as i">
-            <input [formControlName]="i" placeholder="phone:{{i}}">
+            <input type='tel' [formControlName]="i" placeholder="phone:{{i}}">
             <button (click)="removePhone(i)">remove phone</button>
         </div>
     </div>
     <button (click)="addPhone()">add Phone</button>
-    <input type="checkbox" formControlName="isPickUp">
-    <textarea *ngIf="isPickUp" formControlName="deliveryAddress"  cols="30" rows="10" placeholder="delivery address"></textarea>
-
+    <label for="checkbox"> Pick Up</label>
+    <input id="checkbox" type="checkbox" formControlName="isPickUp">
+    <textarea *ngIf="!isPickUp" formControlName="deliveryAddress"  cols="30" rows="10" placeholder="delivery address"></textarea>
+    <div *ngIf="!isPickUp && !deliveryAddress.value.length && (deliveryAddress.dirty || deliveryAddress.touched)"
+         class="alert alert-danger">deliveryAddress required!!</div>
+    <button *ngIf="isValid">Submit</button>
 </fieldset>
+
